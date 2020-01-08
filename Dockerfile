@@ -10,9 +10,11 @@ RUN pip3 install youtube-dl
 # Try to run it so we know it works
 RUN youtube-dl --version
 
-RUN mkdir -p /ytdl/{config,media}
+RUN mkdir /ytdl/config
+RUN mkdir /ytdl/media
+ADD ytdlrun.sh /ytdl
 WORKDIR /ytdl
 ENV RUNEVERY 7200
 
-CMD youtube-dl --playlist-reverse --download-archive /ytdl/config/downloaded.txt -i -o "/ytdl/media/%(uploader)s/%(playlist)s/%(playlist)s - S01E%(playlist_index)s - %(title)s [%(id)s].%(ext)s" -f bestvideo[ext=mp4]+bestaudio[ext=m4a] --merge-output-format mp4 --add-metadata --write-thumbnail --batch-file=/ytdl/config/channel_list.txt ; while true; echo "Waiting $RUNEVERY seconds before next run of youtube-dl"; sleep $RUNEVERY; do youtube-dl --playlist-reverse --download-archive /ytdl/config/downloaded.txt -i -o "/ytdl/media/%(uploader)s/%(playlist)s/%(playlist)s - S01E%(playlist_index)s - %(title)s [%(id)s].%(ext)s" -f bestvideo[ext=mp4]+bestaudio[ext=m4a] --merge-output-format mp4 --add-metadata --write-thumbnail --batch-file=/ytdl/config/channel_list.txt; done      
+CMD /ytdl/ytdlrun.sh ; while true; echo "Waiting $RUNEVERY seconds before next run of youtube-dl"; sleep $RUNEVERY; do /ytdl/ytdlrun.sh; done      
 
