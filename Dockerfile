@@ -10,7 +10,7 @@ RUN pip3 install youtube-dl
 # Try to run it so we know it works
 RUN youtube-dl --version
 
-RUN mkdir /ytdl/config
+RUN mkdir -p /ytdl/config
 RUN mkdir /ytdl/media
 ADD ytdlrun.sh /ytdl
 WORKDIR /ytdl
