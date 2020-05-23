@@ -1,11 +1,9 @@
 FROM ubuntu:20.04
 MAINTAINER Arthur Caranta <arthur@caranta.com>
 
-RUN apt-get update && apt-get install -y ca-certificates ffmpeg openssl python3 aria2 
-RUN apt-get install -y python3-pip git curl
-RUN python3 -m pip install --upgrade pip
-RUN pip3 install youtube-dl
-
+RUN apt-get update && apt-get install -y ca-certificates ffmpeg openssl python3 aria2 curl
+RUN ln -s /usr/bin/python3 /usr/local/bin/python
+RUN curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl && chmod a+rx /usr/local/bin/youtube-dl
 
 # Try to run it so we know it works
 RUN youtube-dl --version
