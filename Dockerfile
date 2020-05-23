@@ -1,4 +1,4 @@
-FROM ubuntu:18.10
+FROM ubuntu:20.04
 MAINTAINER Arthur Caranta <arthur@caranta.com>
 
 RUN apt-get update && apt-get install -y ca-certificates ffmpeg openssl python3 aria2 
