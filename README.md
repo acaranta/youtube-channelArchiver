@@ -116,3 +116,8 @@ The build checks that both yt-dlp and deno run. deno comes from the pinned `deno
 | [`Dockerfile`](Dockerfile) | Ubuntu 22.04 image with ffmpeg, yt-dlp and deno; loops `ytdlrun.sh` every `RUNEVERY` seconds. |
 | [`ytdlrun.sh`](ytdlrun.sh) | One archive pass: self-update, then yt-dlp over `channel_list.txt`. |
 | [`.drone.yml`](.drone.yml) | Drone CI stub that builds and pushes the image. |
+| [`LICENSE`](LICENSE) | MIT licence text. |
+
+## Licence
+
+MIT — see [`LICENSE`](LICENSE). This covers the files in this repository only; yt-dlp, deno, ffmpeg and the Ubuntu packages bundled in the image keep their own licences.
