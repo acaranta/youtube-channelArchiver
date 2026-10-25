@@ -1,6 +1,9 @@
 #!/bin/bash
 CONFIGDIR="/ytdl/config"
 
+# YouTube breaks old yt-dlp releases quickly: refresh the binary before each run
+youtube-dl -U || echo "yt-dlp self-update failed, running the installed version"
+
 COOKIES=""
 if [ -f "$CONFIGDIR/cookies.txt" ]
 then
