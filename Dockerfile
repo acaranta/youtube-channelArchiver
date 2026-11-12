@@ -1,7 +1,7 @@
 # deno is the JS runtime yt-dlp uses to solve YouTube's signature challenges
 FROM denoland/deno:bin-2.9.7 AS deno
 
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 MAINTAINER Arthur Caranta <arthur@caranta.com>
 
 RUN apt-get update && apt-get install -y ca-certificates ffmpeg openssl python3 aria2 curl
